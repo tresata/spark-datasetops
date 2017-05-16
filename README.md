@@ -8,7 +8,7 @@ To use simply import RichPairDataset which is an implicit class:
 import com.tresata.spark.datasetops.RichPairDataset
 ```
 
-RichPairDataset adds methods to a any key-value Dataset (```Dataset[(K, V)]```). For examples:
+RichPairDataset adds methods to a any key-value Dataset (```Dataset[(K, V)]```). Some examples taken from unit tests:
 ```
 scala> import spark.implicits._
 scala> import com.tresata.spark.datasetops.RichPairDataset
