@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/tresata/spark-datasetops.svg?branch=master)](https://travis-ci.org/tresata/spark-datasetops)
 
 # spark-datasetops
-Spark-datasetops is a tiny library that aims to make Spark SQL Dataset more developer friendly by bringing back the operators we all love to use on key-value RDDs (the ones defined in PairRDDFunctions). I suppose these operators were nixed since they cannot easily be ported to Java and Python, but given how easy it is to bring them back it seems like a shame not to have them!
+Spark-datasetops is a tiny library that aims to make Spark SQL Dataset more developer friendly by bringing back the operators we all love to use on key-value RDDs (the ones defined in PairRDDFunctions). I suppose these operators were nixed since they cannot easily be ported to Java and Python, but given how easy it is to bring them back it seems like a shame not to have them.
 
 To use simply import RichPairDataset which is an implicit class:
 ```
