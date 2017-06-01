@@ -27,23 +27,23 @@ class RichPairDatasetSpec extends FunSpec with SparkSuite {
       assert(Seq((1, 2), (1, 3), (2, 4)).toDS.countByKey === Seq((1, 2), (2, 1)))
     }
 
-    it("should joinByKey") {
-      assert(Seq((1, 2), (1, 3), (2, 4)).toDS.joinByKey(Seq((1, "a"), (1, "b"), (2, "c")).toDS) ===
+    it("should joinOnKey") {
+      assert(Seq((1, 2), (1, 3), (2, 4)).toDS.joinOnKey(Seq((1, "a"), (1, "b"), (2, "c")).toDS) ===
         Seq((1, (2, "a")), (1, (2, "b")), (1, (3, "a")), (1, (3, "b")), (2, (4, "c"))))
     }
 
-    it("should leftOuterJoinByKey") {
-      assert(Seq((1, 2), (1, 3), (2, 4)).toDS.leftOuterJoinByKey(Seq((1, "a"), (3, "b")).toDS) ===
+    it("should leftOuterJoinOnKey") {
+      assert(Seq((1, 2), (1, 3), (2, 4)).toDS.leftOuterJoinOnKey(Seq((1, "a"), (3, "b")).toDS) ===
         Seq((1, (2, Some("a"))), (1, (3, Some("a"))), (2, (4, None))))
     }
 
-    it("should rightOuterJoinByKey") {
-      assert(Seq((1, 2), (1, 3), (2, 4)).toDS.rightOuterJoinByKey(Seq((1, "a"), (3, "b")).toDS) ===
+    it("should rightOuterJoinOnKey") {
+      assert(Seq((1, 2), (1, 3), (2, 4)).toDS.rightOuterJoinOnKey(Seq((1, "a"), (3, "b")).toDS) ===
         Seq((1, (Some(2), "a")), (1, (Some(3), "a")), (3, (None, "b"))))
     }
 
-    it("should fullOuterJoinByKey") {
-      assert(Seq((1, 2), (1, 3), (2, 4)).toDS.fullOuterJoinByKey(Seq((1, "a"), (3, "b")).toDS) ===
+    it("should fullOuterJoinOnKey") {
+      assert(Seq((1, 2), (1, 3), (2, 4)).toDS.fullOuterJoinOnKey(Seq((1, "a"), (3, "b")).toDS) ===
         Seq((1, (Some(2), Some("a"))), (1, (Some(3), Some("a"))), (2, (Some(4), None)), (3, (None, Some("b")))))
     }
 

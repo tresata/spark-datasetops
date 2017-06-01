@@ -51,25 +51,25 @@ object `package` {
 
     def countByKey()(implicit encK: Encoder[K]): Dataset[(K, Long)] = ds.groupByKey(_._1).count
 
-    def joinByKey[V1](other: Dataset[(K, V1)])(implicit encKV: Encoder[(K, V)], encKV1: Encoder[(K, V1)], encKVV1: Encoder[(K, (V, V1))]): Dataset[(K, (V, V1))] = {
+    def joinOnKey[V1](other: Dataset[(K, V1)])(implicit encKV: Encoder[(K, V)], encKV1: Encoder[(K, V1)], encKVV1: Encoder[(K, (V, V1))]): Dataset[(K, (V, V1))] = {
       val ds1 = ds.withDefaultFieldNames
       val other1 = other.withDefaultFieldNames
       ds1.joinWith(other1, ds1("_1") === other1("_1"), "inner").map{ x => (x._1._1, (x._1._2, x._2._2)) }
     }
 
-    def leftOuterJoinByKey[V1](other: Dataset[(K, V1)])(implicit encKV: Encoder[(K, V)], encKV1: Encoder[(K, V1)], encKVOptV1: Encoder[(K, (V, Option[V1]))]): Dataset[(K, (V, Option[V1]))] = {
+    def leftOuterJoinOnKey[V1](other: Dataset[(K, V1)])(implicit encKV: Encoder[(K, V)], encKV1: Encoder[(K, V1)], encKVOptV1: Encoder[(K, (V, Option[V1]))]): Dataset[(K, (V, Option[V1]))] = {
       val ds1 = ds.withDefaultFieldNames
       val other1 = other.withDefaultFieldNames
       ds1.joinWith(other1, ds1("_1") === other1("_1"), "left_outer").map{ x => (x._1._1, (x._1._2, Option(x._2).map(_._2))) }
     }
 
-    def rightOuterJoinByKey[V1](other: Dataset[(K, V1)])(implicit encKV: Encoder[(K, V)], encKV1: Encoder[(K, V1)], encKVOptV1: Encoder[(K, (Option[V], V1))]): Dataset[(K, (Option[V], V1))] = {
+    def rightOuterJoinOnKey[V1](other: Dataset[(K, V1)])(implicit encKV: Encoder[(K, V)], encKV1: Encoder[(K, V1)], encKVOptV1: Encoder[(K, (Option[V], V1))]): Dataset[(K, (Option[V], V1))] = {
       val ds1 = ds.withDefaultFieldNames
       val other1 = other.withDefaultFieldNames
       ds1.joinWith(other1, ds1("_1") === other1("_1"), "right_outer").map{ x => (x._2._1, (Option(x._1).map(_._2), x._2._2)) }
     }
 
-    def fullOuterJoinByKey[V1](other: Dataset[(K, V1)])(implicit encKV: Encoder[(K, V)], encKV1: Encoder[(K, V1)], encKVOptV1: Encoder[(K, (Option[V], Option[V1]))]):
+    def fullOuterJoinOnKey[V1](other: Dataset[(K, V1)])(implicit encKV: Encoder[(K, V)], encKV1: Encoder[(K, V1)], encKVOptV1: Encoder[(K, (Option[V], Option[V1]))]):
         Dataset[(K, (Option[V], Option[V1]))] = {
       val ds1 = ds.withDefaultFieldNames
       val other1 = other.withDefaultFieldNames
