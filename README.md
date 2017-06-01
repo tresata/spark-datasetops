@@ -36,7 +36,7 @@ scala> x.countByKey.show
 |    2|       1|
 |    1|       2|
 +-----+--------+
-scala> x.joinByKey(y).show
+scala> x.joinOnKey(y).show
 +---+-----+
 | _1|   _2|
 +---+-----+
