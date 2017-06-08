@@ -26,6 +26,8 @@ object `package` {
 
     def mapValues[U](f: V => U)(implicit encKU: Encoder[(K, U)]): Dataset[(K, U)] = ds.map{ kv => (kv._1, f(kv._2)) }
 
+    def flatMapValues[U](f: V => TraversableOnce[U])(implicit encKU: Encoder[(K, U)]): Dataset[(K, U)] = ds.flatMap{ kv => f(kv._2).map(v1 => (kv._1, v1)) }
+
     def reduceByKey(f: (V, V) => V)(implicit encK: Encoder[K], encV: Encoder[V]): Dataset[(K, V)] = ds.groupByKey(_._1).mapValues(_._2).reduceGroups(f)
 
     def aggByKey[U1](col1: TypedColumn[V, U1])(implicit encK: Encoder[K], encV: Encoder[V]): Dataset[(K, U1)] =
