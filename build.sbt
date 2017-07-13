@@ -10,10 +10,9 @@ lazy val root = (project in file(".")).settings(
   scalacOptions in (Compile, console) := (scalacOptions in (Compile, console)).value.filter(_ != "-Ywarn-unused-import"),
   scalacOptions in (Test, console) := (scalacOptions in (Test, console)).value.filter(_ != "-Ywarn-unused-import"),
   libraryDependencies ++= Seq(
-    "org.apache.spark" %% "spark-sql" % "2.2.0-SNAPSHOT" % "provided",
+    "org.apache.spark" %% "spark-sql" % "2.2.0" % "provided",
     "org.scalatest" %% "scalatest" % "3.0.3" % "test"
   ),
-  resolvers += "asf snapshots" at "http://repository.apache.org/snapshots/",
   testOptions in Test += Tests.Argument(TestFrameworks.ScalaTest, "-oF"),
   publishMavenStyle := true,
   pomIncludeRepository := { x => false },
