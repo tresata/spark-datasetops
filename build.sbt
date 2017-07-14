@@ -31,11 +31,10 @@ lazy val root = (project in file(".")).settings(
       <license>
       <name>Apache 2</name>
       <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-        <distribution>repo</distribution>
+      <distribution>repo</distribution>
       <comments>A business-friendly OSS license</comments>
       </license>
     </licenses>
-    <url>https://github.com/tresata/spark-datasetops</url>
     <scm>
       <url>git@github.com:tresata/spark-datasetops.git</url>
       <connection>scm:git:git@github.com:tresata/spark-datasetops.git</connection>
