@@ -10,7 +10,7 @@ lazy val root = (project in file(".")).settings(
   scalacOptions in (Compile, console) := (scalacOptions in (Compile, console)).value.filter(_ != "-Ywarn-unused-import"),
   scalacOptions in (Test, console) := (scalacOptions in (Test, console)).value.filter(_ != "-Ywarn-unused-import"),
   libraryDependencies ++= Seq(
-    "org.apache.spark" %% "spark-sql" % "2.2.1" % "provided",
+    "org.apache.spark" %% "spark-sql" % "2.3.0" % "provided",
     "org.scalatest" %% "scalatest" % "3.0.5" % "test"
   ),
   testOptions in Test += Tests.Argument(TestFrameworks.ScalaTest, "-oF"),
