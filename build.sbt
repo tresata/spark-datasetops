@@ -11,7 +11,7 @@ lazy val root = (project in file(".")).settings(
   scalacOptions in (Test, console) := (scalacOptions in (Test, console)).value.filter(_ != "-Ywarn-unused-import"),
   libraryDependencies ++= Seq(
     "org.apache.spark" %% "spark-sql" % "2.2.1" % "provided",
-    "org.scalatest" %% "scalatest" % "3.0.4" % "test"
+    "org.scalatest" %% "scalatest" % "3.0.5" % "test"
   ),
   testOptions in Test += Tests.Argument(TestFrameworks.ScalaTest, "-oF"),
   publishMavenStyle := true,
