@@ -1,7 +1,7 @@
 lazy val root = (project in file(".")).settings(
   organization := "com.tresata",
   name := "spark-datasetops",
-  version := "0.6.0",
+  version := "0.7.0-SNAPSHOT",
   scalaVersion := "2.11.12",
   crossScalaVersions := Seq("2.11.12", "2.12.8"),
   javacOptions in (Compile, compile) ++= Seq("-Xlint:unchecked", "-source", "1.8", "-target", "1.8"),
