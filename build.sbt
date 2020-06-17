@@ -27,6 +27,7 @@ lazy val root = (project in file(".")).settings(
   },
   credentials += Credentials(Path.userHome / ".m2" / "credentials_sonatype"),
   credentials += Credentials(Path.userHome / ".m2" / "credentials_artifactory"),
+  Global / useGpgPinentry := true,
   pomExtra := (
     <url>https://github.com/tresata/spark-datasetops</url>
     <licenses>
