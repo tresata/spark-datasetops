@@ -50,3 +50,7 @@ scala> x.joinOnKey(y).show
 
 Enjoy!
 Team @ Tresata
+
+## Update June 2020
+
+Starting with release 1.0.0 this library compiles against Spark 3. Because of this Spark 2 and Scala 2.11 are no longer supported. We are still compiling with Java 8.
