@@ -1,9 +1,9 @@
 package com.tresata.spark.datasetops
 
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
 import org.apache.spark.sql.expressions.scalalang.typed
 
-class RichPairDatasetSpec extends FunSpec with SparkSuite {
+class RichPairDatasetSpec extends AnyFunSpec with SparkSuite {
   import spark.implicits._
 
   describe("RichPairDataset") {
