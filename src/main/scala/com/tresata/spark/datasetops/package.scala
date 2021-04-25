@@ -187,7 +187,7 @@ scala> Seq((1, 2), (1, 3), (2, 4)).toDS.countByKey.show
 +-----+--------+
       * }}}
       */
-    def countByKey()(implicit encK: Encoder[K]): Dataset[(K, Long)] = ds.groupByKey(_._1).count
+    def countByKey()(implicit encK: Encoder[K]): Dataset[(K, Long)] = ds.groupByKey(_._1).count()
 
     /** Inner join with another key-value Dataset on their keys.
       *

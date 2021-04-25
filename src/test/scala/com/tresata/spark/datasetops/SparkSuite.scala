@@ -22,11 +22,11 @@ trait SparkSuite {
   implicit lazy val spark: SparkSession = SparkSuite.spark
 
   implicit def dsEq[X]: Equality[Dataset[X]] = new Equality[Dataset[X]] {
-    private def toCounts[Y](s: Seq[Y]): Map[Y, Int] = s.groupBy(identity).mapValues(_.size)
+    private def toCounts[Y](s: Seq[Y]): Map[Y, Int] = s.groupBy(identity).mapValues(_.size).toMap
 
     def areEqual(a: Dataset[X], b: Any): Boolean = b match {
-      case d: Dataset[_] => toCounts(a.collect) == toCounts(d.collect)
-      case s: Seq[_] => toCounts(a.collect) == toCounts(s)
+      case d: Dataset[_] => toCounts(a.collect()) == toCounts(d.collect())
+      case s: Seq[_] => toCounts(a.collect()) == toCounts(s)
     }
   }
 }
