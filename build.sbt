@@ -9,6 +9,7 @@ lazy val root = (project in file(".")).settings(
   Test / compile / scalacOptions := (Test / compile / scalacOptions).value.filter(_ != "-Ywarn-value-discard").filter(_ != "-Ywarn-unused"),
   Compile / console / scalacOptions := (Compile/ console / scalacOptions).value.filter(_ != "-Ywarn-unused-import"),
   Test / console / scalacOptions := (Test / console / scalacOptions).value.filter(_ != "-Ywarn-unused-import"),
+  licenses += "Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0.txt"),
   libraryDependencies ++= Seq(
     "org.apache.spark" %% "spark-sql" % "3.1.2" % "provided",
     "org.scalatest" %% "scalatest-funspec" % "3.2.9" % "test"
@@ -29,14 +30,6 @@ lazy val root = (project in file(".")).settings(
   Global / useGpgPinentry := true,
   pomExtra := (
     <url>https://github.com/tresata/spark-datasetops</url>
-    <licenses>
-      <license>
-      <name>Apache 2</name>
-      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-      <distribution>repo</distribution>
-      <comments>A business-friendly OSS license</comments>
-      </license>
-    </licenses>
     <scm>
       <url>git@github.com:tresata/spark-datasetops.git</url>
       <connection>scm:git:git@github.com:tresata/spark-datasetops.git</connection>
