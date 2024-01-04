@@ -12,7 +12,7 @@ lazy val root = (project in file(".")).settings(
   Test / console / scalacOptions := (Test / console / scalacOptions).value.filter(_ != "-Ywarn-unused-import"),
   licenses += "Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0.txt"),
   libraryDependencies ++= Seq(
-    "org.apache.spark" %% "spark-sql" % "3.4.1" % "provided",
+    "org.apache.spark" %% "spark-sql" % "3.5.0" % "provided",
     "org.scalatest" %% "scalatest-funspec" % "3.2.16" % "test"
   ),
   Test / testOptions += Tests.Argument(TestFrameworks.ScalaTest, "-oF"),
